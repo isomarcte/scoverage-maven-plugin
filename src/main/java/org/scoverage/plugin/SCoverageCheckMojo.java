@@ -42,11 +42,11 @@ import scoverage.Serializer;
  * In forked {@code scoverage} life cycle project is compiled with SCoverage instrumentation
  * and unit tests are executed before checking.
  * <br>
- * 
+ *
  * @author <a href="mailto:gslowikowski@gmail.com">Grzegorz Slowikowski</a>
  * @since 1.0.0
  */
-@Mojo( name = "check", threadSafe = false )
+@Mojo( name = "check", threadSafe = false, aggregator = true )
 @Execute( lifecycle = "scoverage", phase = LifecyclePhase.TEST )
 public class SCoverageCheckMojo
     extends AbstractMojo
@@ -55,7 +55,7 @@ public class SCoverageCheckMojo
     /**
      * Allows SCoverage to be skipped.
      * <br>
-     * 
+     *
      * @since 1.0.0
      */
     @Parameter( property = "scoverage.skip", defaultValue = "false" )
@@ -85,7 +85,7 @@ public class SCoverageCheckMojo
      * <br>
      * See <a href="https://github.com/scoverage/sbt-scoverage#minimum-coverage">https://github.com/scoverage/sbt-scoverage#minimum-coverage</a> for additional documentation.
      * <br>
-     * 
+     *
      * @since 1.0.0
      */
     @Parameter( property = "scoverage.failOnMinimumCoverage", defaultValue = "false" )
@@ -105,7 +105,7 @@ public class SCoverageCheckMojo
 
     /**
      * Checks tests coverage and optionally fails the build if minimum level not reached.
-     * 
+     *
      * @throws MojoFailureException if coverage is below minimumCoverage and failOnMinimumCoverage option set
      */
     @Override
